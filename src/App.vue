@@ -1,15 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <HelloWorld @add-new-year-fact="addNewYearFact"/>
+  <DisplayList :yearfacts="yearfacts"/>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import DisplayList from './components/DisplayList.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    DisplayList
+  },
+  data() {
+    return {
+      yearfacts: []
+    }
+  },
+  methods: {
+    addNewYearFact(text) {
+      this.yearfacts.push(text);
+    }
   }
 }
 </script>
